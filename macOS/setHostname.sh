@@ -1,10 +1,8 @@
 #!/bin/zsh
 
-# This scrip is intended for macOS 10.15 (Catalina) and higher
-
-echo 'Enter a computer name:'
+echo "Enter a computer name:"
 read computerName
-echo "Hostname ${computerName}"
+echo "Setting hostname to: ${computerName}"
 
 scutil --set ComputerName $computerName
 if [ $? -ne 0 ]
@@ -27,4 +25,4 @@ then
     exit 1
 fi
 
-echo 'sucessfully configured computer name.'
+echo "sucessfully configured computer name."
