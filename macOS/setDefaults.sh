@@ -10,10 +10,10 @@
 #
 # Usage ./set-defaults.sh
 
-echo 'Configuring macOS defaults...'
+echo "Configuring macOS defaults..."
 
 # Ask for the administrator password upfront
-echo 'Sudo credentials required to configure some of the settings:'
+echo "Sudo credentials are required to run setDefaults.sh:"
 sudo -v
 
 # Close any open System Preferences panes
@@ -386,6 +386,5 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 
-echo 'Configuration complete.'
-echo 'Note that restarting the affected apps will probably be good enough but,'
-echo 'a restart is recommended for all settings to take effect.'
+echo "Configuration of macOS defaults complete."
+echo "A restart is recommended to ensure all the settings take effect."
