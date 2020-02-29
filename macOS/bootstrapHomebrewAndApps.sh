@@ -25,6 +25,7 @@ brew cask install \
 adapter \
 aws-vault \
 basictex \
+brave-browser \
 caffeine \
 chromium \
 clockify \
