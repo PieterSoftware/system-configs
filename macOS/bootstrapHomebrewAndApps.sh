@@ -16,7 +16,8 @@ echo "Installing Homebrew Formulae"
 brew install \
 python \
 pyenv \
-awscli
+awscli \
+sshfs \ # Note it requires osxfuse cask (insalled bellow) to run
 
 #  Initial list after browsing all the casks, apply a second round of checking
 echo "Installing casks Formulae"
@@ -45,6 +46,9 @@ istat-menus \
 iterm2 \
 joshaven-winbox \
 kaleidoscope \
+macdown \
+osxfuse \
+postman \
 private-internet-access \
 protonmail-bridge \
 protonvpn \
@@ -55,6 +59,7 @@ sublime-text \
 teamviewer \
 telegram \
 tex-live-utility \
+tunnelblick \
 tuxera-ntfs \
 veracrypt \
 virtualbox \
