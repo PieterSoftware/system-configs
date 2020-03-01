@@ -20,6 +20,12 @@ source bootstrap-macOS.sh
 source bootstrap-FreeBSD.sh
 ```
 
+### Why use `source` to run the scrips
+
+Using `source` runs the script in the current shell instead of executing a new shell. This is handy when a script does not have a shebang.
+
+You can still run the scrips using `./scriptname.sh` if you like.
+
 ## Thanks
 
 The original idea came from:

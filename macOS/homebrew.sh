@@ -15,10 +15,10 @@ fi
 echo "Installing Homebrew Formulae"
 brew install \
 awscli \
+dos2unix \
 pyenv \
 python \
 sshfs \
-dos2unix \
 
 #  Initial list after browsing all the casks, apply a second round of checking
 echo "Installing casks Formulae"
@@ -36,17 +36,14 @@ istat-menus \
 iterm2 \
 joshaven-winbox \
 kaleidoscope \
+onedrive \
 osxfuse \
 postman \
 serial \
 sourcetree \
 tex-live-utility \
 tunnelblick \
-tuxera-ntfs \
-veracrypt \
 virtualbox \
 virtualbox-extension-pack \
 visual-studio-code \
 vlc \
-wireshark \
-xca \
