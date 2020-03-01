@@ -5,7 +5,7 @@ echo ""
 echo "Starting the bootstrap process..."
 echo ""
 
-scripts="macOS/bootstrapHomebrewAndApps.sh
+scripts="macOS/homebrew.sh
 macOS/setDefaults.sh"
 
 for script in ${scripts}
