@@ -1,0 +1,29 @@
+// cSpell Settings
+{
+    "version": "0.1",
+    "language": "en-GB",
+    "allowCompoundWords": true,
+    // words - list of words to be always considered correct
+    "words": [
+        "doxygen",
+        "drawio",
+        "gitkraken",
+        "istat",
+        "iterm",
+        "joshaven",
+        "ntfs",
+        "osxfuse",
+        "Pieter",
+        "pyenv",
+        "Smit",
+        "sshfs",
+        "tunnelblick",
+        "tuxera"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ]
+}

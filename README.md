@@ -20,16 +20,16 @@ source bootstrap-macOS.sh
 source bootstrap-FreeBSD.sh
 ```
 
-### Why use `source` to run the scrips
+### Why use `source` to run the scripts
 
 Using `source` runs the script in the current shell instead of executing a new shell. This is handy when a script does not have a shebang.
 
-You can still run the scrips using `./scriptname.sh` if you like.
+You can still run the scripts using `./scriptname.sh` if you like.
 
 ## Thanks
 
 The original idea came from:
 
-* [Holman's dotfiles](https://raw.githubusercontent.com/holman/dotfiles/)
-* [Mathias’s dotfiles](https://github.com/mathiasbynens/dotfiles)
+* [Holman dotfiles](https://raw.githubusercontent.com/holman/dotfiles/)
+* [Mathias dotfiles](https://github.com/mathiasbynens/dotfiles)
 * [Unofficial guide to dotfiles](https://dotfiles.github.io/)
