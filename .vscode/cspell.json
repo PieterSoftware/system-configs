@@ -5,6 +5,16 @@
     "allowCompoundWords": true,
     // words - list of words to be always considered correct
     "words": [
+        "Pieter",
+        "Smit"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ],
+    "ignoreWords": [
         "doxygen",
         "drawio",
         "gitkraken",
@@ -13,17 +23,13 @@
         "joshaven",
         "ntfs",
         "osxfuse",
-        "Pieter",
         "pyenv",
-        "Smit",
         "sshfs",
         "tunnelblick",
-        "tuxera"
-    ],
-    // flagWords - list of words to be always considered incorrect
-    // This is useful for offensive words and common spelling errors.
-    // For example "hte" should be "the"
-    "flagWords": [
-        "hte"
+        "tuxera",
+        "upsd",
+        "upssched",
+        "hiddev",
+        "raspbian"
     ]
 }

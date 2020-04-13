@@ -2,6 +2,8 @@ import argparse
 import sys
 import os
 
+# TODO make the settings portable to other operating systems
+
 configFiles = [
     "nut.conf",
     "ups.conf",
@@ -9,6 +11,11 @@ configFiles = [
     "upsd.users",
     "upsmon.conf",
     "upssched.conf",
+]
+
+cgiConfigFiles = [
+    "hosts.conf",
+    "upsset.conf",
 ]
 
 scriptFiles = [
@@ -43,6 +50,11 @@ class initArgs(object):
             required=True,
         )
         self.parser.add_argument(
+            "--upsWebMon",
+            help="Install the configuration files for web monitoring of UPS",
+            action='store_true'
+        )
+        self.parser.add_argument(
             "--adminPassword",
             type=str,
             help="Configure the password used for the admin user using the CGI Website",
@@ -68,11 +80,19 @@ def main():
 
     print("Backup the original configuration files")
     for configFile in configFiles:
-        if (not os.path.exists("{}/{}.orig".format(installPath, configFile)))
+        if (not os.path.exists("{}/{}.orig".format(installPath, configFile))):
             os.system("cp {path}/{file} {path}/{file}.orig".format(
                 path = installPath,
                 file = configFile
             ))
+
+    if (appArguments.upsWebMon):
+        for configFile in cgiConfigFiles:
+            if (not os.path.exists("{}/{}.orig".format(installPath, configFile))):
+                os.system("cp {path}/{file} {path}/{file}.orig".format(
+                    path = installPath,
+                    file = configFile
+                ))
 
     print("Preparing the configuration files:")
     for configFile in configFiles:
@@ -107,6 +127,37 @@ def main():
         os.system("chown root:nut {path}/{file}".format(
             path = installPath,
             file = configFile
+        ))
+
+    if (appArguments.upsWebMon):
+        for configFile in cgiConfigFiles:
+            os.system("cp {file} {path}/{file}".format(
+                path = installPath,
+                file = configFile
+            ))
+            os.system("chmod 640 {path}/{file}".format(
+                path = installPath,
+                file = configFile
+            ))
+            os.system("chown root:nut {path}/{file}".format(
+                path = installPath,
+                file = configFile
+            ))
+
+        # Set the permissions for web UI
+        os.system("chmod 644 {path}/{file}".format(
+            path = installPath,
+            file = "hosts.conf"
+        ))
+        os.system("chmod 644 {path}/*.html".format(
+            path = installPath
+        ))
+        os.system("chown www-data:www-data /usr/lib/cgi-bin/nut/*.cgi")
+
+        # Copy the nginx config
+        os.system("cp {file} {path}/{file}".format(
+            path = "/etc/nginx/sites-enabled",
+            file = "nut_nginx.conf"
         ))
 
     scriptInstallPath = "/usr/local/bin"
