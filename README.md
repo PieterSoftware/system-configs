@@ -1,4 +1,4 @@
-# Pieter Software dotfiles
+# Pieter Software System-Configs
 
 The scripts and files in this repository configures systems as I use them and the settings applied by this repository will most likely not suit everyone. Please fork the repository and modify the settings accordingly.
 
