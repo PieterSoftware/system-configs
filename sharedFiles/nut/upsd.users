@@ -1,0 +1,8 @@
+[upsmon_local]
+    password = ##LocalPass##
+    upsmon master
+
+[admin]
+    password = ##AdminPass##
+    actions = SET
+    instcmds = ALL

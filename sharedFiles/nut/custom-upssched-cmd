@@ -1,0 +1,37 @@
+#! /bin/sh
+#
+# This script should be called by upssched via the CMDSCRIPT directive.
+#
+# Here is a quick example to show how to handle a bunch of possible
+# timer names with the help of the case structure.
+#
+# This script may be replaced with another program without harm.
+#
+# The first argument passed to your CMDSCRIPT is the name of the timer
+# from your AT lines.
+
+ups_emailnotify=0
+ups_toemail=""
+ups_subject=""
+ident="eaton"
+
+case $1 in
+	"SHUTDOWN")
+		if [ -n "$(upsc $ident | grep "ups.status.*OL")" ]; then
+			logger -t upssched-cmd "Shutdown not initiated as ups.status indicates ${ident} is ONLINE (OL)"
+		else
+			logger -t upssched-cmd "issuing shutdown"
+			/sbin/upsmon -c fsd
+		fi
+		;;
+	"EMAIL"|"COMMBAD"|"COMMOK")
+		if [ "${ups_emailnotify}" -eq 1 ]; then
+			echo "$NOTIFYTYPE - $ident" | mail -s "$(echo "${ups_subject}"|sed "s/%d/$(date)/"|sed "s/%h/$(hostname)/")" "${ups_toemail}"
+		fi
+		;;
+	*)
+		logger -t upssched-cmd "Unrecognized command: $1"
+		;;
+esac
+
+done
