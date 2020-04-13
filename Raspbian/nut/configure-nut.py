@@ -135,7 +135,7 @@ def main():
                 path = installPath,
                 file = configFile
             ))
-            os.system("chmod 640 {path}/{file}".format(
+            os.system("chmod 644 {path}/{file}".format(
                 path = installPath,
                 file = configFile
             ))
@@ -145,10 +145,6 @@ def main():
             ))
 
         # Set the permissions for web UI
-        os.system("chmod 644 {path}/{file}".format(
-            path = installPath,
-            file = "hosts.conf"
-        ))
         os.system("chmod 644 {path}/*.html".format(
             path = installPath
         ))
