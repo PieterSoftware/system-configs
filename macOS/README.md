@@ -1,18 +1,18 @@
 # macOS
 
-This folder contains scripts called from the main macOS bootstrap script. Not all of these scripts are executed and function more as a utility script that can be run when required.
+This folder contains the scripts and files specific to macOS.
+
+Not all of these scripts are executed when the system is bootstrapped and function as a utility script that can be run when required.
 
 Scripts can be run manually by running
 
-```
-source scriptName.sh
+```shell
+source script.sh
 ```
 
 ## Script descriptions
 
-### setDefaults.sh
-
-_Executed by bootstrap-macOS.sh_
+### setDefaults.sh (Executed by bootstrap-macOS.sh)
 
 This script sets macOS defaults by using the `defaults` command
 
@@ -20,11 +20,9 @@ This script sets macOS defaults by using the `defaults` command
 
 Script to ease the processing of settings the host name of the device.
 
-### homebrew.sh
+### homebrew-basic.sh (Executed by bootstrap-macOS.sh)
 
-_Executed by bootstrap-macOS.sh_
-
-#### Formulae installed
+#### Formulae
 
 * [awscli](https://formulae.brew.sh/formula/awscli)
 * [dos2unix](https://formulae.brew.sh/formula/dos2unix)
@@ -32,11 +30,9 @@ _Executed by bootstrap-macOS.sh_
 * [python](https://formulae.brew.sh/formula/python)
 * [sshfs](https://formulae.brew.sh/formula/sshfs)
 
-#### Casks installed
+#### Casks
 
 * [1password](https://formulae.brew.sh/cask/1password)
-* [basictex](https://formulae.brew.sh/cask/basictex)
-* [brave-browser](https://formulae.brew.sh/cask/brave-browser)
 * [caffeine](https://formulae.brew.sh/cask/caffeine)
 * [daisydisk](https://formulae.brew.sh/cask/daisydisk)
 * [divvy](https://formulae.brew.sh/cask/divvy)
@@ -52,12 +48,19 @@ _Executed by bootstrap-macOS.sh_
 * [postman](https://formulae.brew.sh/cask/postman)
 * [serial](https://formulae.brew.sh/cask/serial)
 * [sourcetree](https://formulae.brew.sh/cask/sourcetree)
-* [tex-live-utility](https://formulae.brew.sh/cask/tex-live-utility)
 * [tunnelblick](https://formulae.brew.sh/cask/tunnelblick)
-* [virtualbox-extension-pack](https://formulae.brew.sh/cask/virtualbox-extension-pack)
-* [virtualbox](https://formulae.brew.sh/cask/virtualbox)
 * [visual-studio-code](https://formulae.brew.sh/cask/visual-studio-code)
 * [vlc](https://formulae.brew.sh/cask/vlc)
+
+### homebrew-latex.sh
+
+* [basictex](https://formulae.brew.sh/cask/basictex)
+* [tex-live-utility](https://formulae.brew.sh/cask/tex-live-utility)
+
+#### homebrew-virtualbox.sh
+
+* [virtualbox-extension-pack](https://formulae.brew.sh/cask/virtualbox-extension-pack)
+* [virtualbox](https://formulae.brew.sh/cask/virtualbox)
 
 #### Casks to remember
 
@@ -65,6 +68,7 @@ Listed below are casks I am not actively using but thought they might be handy a
 
 * [adapter](https://formulae.brew.sh/cask/adapter)
 * [aws-vault](https://formulae.brew.sh/cask/aws-vault)
+* [brave-browser](https://formulae.brew.sh/cask/brave-browser)
 * [chromium](https://formulae.brew.sh/cask/chromium)
 * [clockify](https://formulae.brew.sh/cask/clockify)
 * [docker](https://formulae.brew.sh/cask/docker)
@@ -86,4 +90,3 @@ Listed below are casks I am not actively using but thought they might be handy a
 * [veracrypt](https://formulae.brew.sh/cask/veracrypt)
 * [wireshark](https://formulae.brew.sh/cask/wireshark)
 * [xca](https://formulae.brew.sh/cask/xca)
-

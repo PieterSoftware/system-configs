@@ -1,22 +1,22 @@
 # Pieter Software dotfiles
 
-Your dotfiles are how you personalize your system. The settings applied by this repository will most likely not suit everyone. Please fork the repository and modify the settings accordingly.
+The scripts and files in this repository configures systems as I use them and the settings applied by this repository will most likely not suit everyone. Please fork the repository and modify the settings accordingly.
 
-## How to use?
+## How to use
 
-The project is split into topics represented by folders. Each folder contains a relevant readme to guide in the usage of the files.
+The project is split folders for the various operating systems to which these settings can be applied. Each folder contains a relevant readme with more details.
 
-To apply the whole repository and all the settings relevant run the bootstrap script for your OS from the repo directory:
+To bootstrap the system run the appropriate script:
 
 * macOS
 
-```
+```shell
 source bootstrap-macOS.sh
 ```
 
 * FreeBSD
 
-```
+```shell
 source bootstrap-FreeBSD.sh
 ```
 

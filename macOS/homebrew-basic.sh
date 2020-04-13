@@ -1,18 +1,22 @@
 #!/bin/zsh
 
-echo "Installing Homebrew and various formulae and casks..."
+echo "Running $0..."
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+which -s brews > /dev/null
+if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    echo "Installing Homebrew..."
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    if [ $? -ne 0 ]; then
+    else
+        echo "Failed to bootstrap Homebrew"
+        return
+    fi
+fi
 echo ""
 
-if [ $? -ne 0 ]; then
-else
-    echo "Failed to bootstrap Homebrew"
-    return
-fi
-
 # For ease of commenting out some of the installs they are listed sperately
-echo "Installing Homebrew Formulae"
+echo "Installing Homebrew Formulae..."
 brew install \
 awscli \
 dos2unix \
@@ -21,11 +25,9 @@ python \
 sshfs \
 
 #  Initial list after browsing all the casks, apply a second round of checking
-echo "Installing casks Formulae"
+echo "Installing casks Formulae..."
 brew cask install \
 1password \
-basictex \
-brave-browser \
 caffeine \
 daisydisk \
 divvy \
@@ -41,9 +43,6 @@ osxfuse \
 postman \
 serial \
 sourcetree \
-tex-live-utility \
 tunnelblick \
-virtualbox \
-virtualbox-extension-pack \
 visual-studio-code \
 vlc \
