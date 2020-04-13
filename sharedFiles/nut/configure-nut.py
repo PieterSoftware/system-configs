@@ -1,5 +1,6 @@
 import argparse
 import sys
+import os
 
 configFiles = [
     "nut.conf",
@@ -17,22 +18,17 @@ scriptFiles = [
 class initArgs(object):
     def __init__(self):
         self.parser = argparse.ArgumentParser()
-        # Disable FreeBSD for now until compatibility was tested
-        # self.parser.add_argument(
-        #     "--FreeBSD",
-        #     help="Use FreeBSD install paths.",
-        #     action='store_true'
-        # )
-        self.parser.add_argument(
-            "--Linux",
-            help="Use Linux install paths",
-            action='store_true'
-        )
         self.parser.add_argument(
             "--devicePath",
             type=str,
             help="The device path of the ups",
             default="/dev/usb/hiddev0"
+        )
+        self.parser.add_argument(
+            "--installPath",
+            type=str,
+            help="Install path for the configuration files",
+            default="/etc/nut"
         )
         self.parser.add_argument(
             "--systemIP",
@@ -66,32 +62,19 @@ def main():
     appArgumentParser = initArgs()
     appArguments = appArgumentParser.get_args()
 
-    osType = "Unknown"
-    installPath = "Unknown"
+    installPath = appArguments.installPath
 
-    # Disable FreeBSD for now until compatibility was tested
-    # if (appArguments.FreeBSD) and (appArguments.Linux):
-    #     appArguments.print("FreeBSD and Linux are mutually exclusive parameters")
+    print("Is nut installed?")
 
-    # Disable FreeBSD for now until compatibility was tested
-    # if (not appArguments.FreeBSD) and ( not appArguments.Linux):
-    #     appArgumentParser.error("A host operating system must be selected")
-
-    # Disable FreeBSD for now until compatibility was tested
-    # if (appArguments.FreeBSD):
-    #     osType="FreeBSD"
-    #     installPath="/usr/local/etc/nut"
-
-    # Disable FreeBSD for now until compatibility was tested, thus force Linux here
-    # if (appArguments.Linux):
-    if (1):
-        osType="Linux"
-        installPath="/etc/nut"
-
-    print("Configuring NUT for use on {}.".format(osType))
+    print("Backup the original configuration files")
+    for configFile in configFiles:
+        if (not os.path.exists("{}/{}.orig".format(installPath, configFile)))
+            os.system("cp {path}/{file} {path}/{file}.orig".format(
+                path = installPath,
+                file = configFile
+            ))
 
     print("Preparing the configuration files:")
-
     for configFile in configFiles:
         print(configFile, "... ", end="")
 
@@ -110,6 +93,36 @@ def main():
             file.write(filedata)
 
         print("Done")
+
+    print("Save configuration files")
+    for configFile in configFiles:
+        os.system("mv {file}.tmp {path}/{file}".format(
+            path = installPath,
+            file = configFile
+        ))
+        os.system("chmod 640 {path}/{file}".format(
+            path = installPath,
+            file = configFile
+        ))
+        os.system("chown root:nut {path}/{file}".format(
+            path = installPath,
+            file = configFile
+        ))
+
+    scriptInstallPath = "/usr/local/bin"
+    for scriptFile in scriptFiles:
+        os.system("cp {file} {path}/{file}".format(
+            path = scriptInstallPath,
+            file = scriptFile
+        ))
+        os.system("chmod 755 {path}/{file}".format(
+            path = scriptInstallPath,
+            file = scriptFile
+        ))
+        os.system("chown root:root {path}/{file}".format(
+            path = scriptInstallPath,
+            file = scriptFile
+        ))
 
 if __name__ == "__main__":
     main()
