@@ -75,6 +75,7 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+
 #########################################
 # Accessories Settings                  #
 #########################################
@@ -94,6 +95,12 @@ defaults write -g AppleKeyboardUIMode -int 3
 # Disable OS X logging of downloaded files
 # Visit http://www.macgasm.net/2013/01/18/good-morning-your-mac-keeps-a-log-of-all-your-downloads/
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Enable the firewall
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+# Time Machine should stop asking to use new disks for backup
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 
 #########################################
@@ -149,7 +156,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.finder EmptyTrashSecurely -bool true
 
 # Show the ~/Library folder.
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
@@ -164,7 +171,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 
 #########################################
-# Screen Settings                       #
+# Screen and Power Settings                       #
 #########################################
 
 # Require password immediately after sleep or screen saver begins
@@ -173,6 +180,9 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
+
+# Prevent the computer from sleeping while on power adaptor
+sudo systemsetup -setcomputersleep Never
 
 
 #########################################
