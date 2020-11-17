@@ -17,7 +17,7 @@ The configuration files have place holders for the passphrase, system IP, and pa
 To prepare the configuration files for use run:
 
 ```shell
-python configure-nut.py
+sudo python3 configure-nut.py --upsmonPassword "SET_PASSWORD" --adminPassword "SET_PASSWORD" --systemIP "SET_IP" --upsWebMon
 ```
 
 The script will use the command line arguments provided to configure the NUT configuration files before installing them.
