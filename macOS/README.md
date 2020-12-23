@@ -43,11 +43,15 @@ This script checks if homebrew is installed before installing the taps, formulae
 
 ### install-latex.sh
 
-* [basictex](https://formulae.brew.sh/cask/basictex)
-* [tex-live-utility](https://formulae.brew.sh/cask/tex-live-utility)
+Install latex support using homebrew casks
+
+- [basictex](https://formulae.brew.sh/cask/basictex)
+- [tex-live-utility](https://formulae.brew.sh/cask/tex-live-utility)
 
 #### install-virtualbox.sh
 
-* [virtualbox-extension-pack](https://formulae.brew.sh/cask/virtualbox-extension-pack)
-* [virtualbox](https://formulae.brew.sh/cask/virtualbox)
+Install virtualbox using homebrew casks
+
+- [virtualbox-extension-pack](https://formulae.brew.sh/cask/virtualbox-extension-pack)
+- [virtualbox](https://formulae.brew.sh/cask/virtualbox)
 
