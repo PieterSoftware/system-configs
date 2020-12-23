@@ -4,16 +4,44 @@ This folder contains the scripts and files specific to macOS.
 
 Not all of these scripts are executed when the system is bootstrapped and function as a utility script that can be run when required.
 
-Scripts can be run manually by running
-
-```shell
-source script.sh
-```
-
 ## macOS support
 
 - Catalina 10.15.7 ✅
 - Big Sur 11.1 ⚠️ not tested
+
+## SSH key setup
+
+Generate ssh keys
+
+- RSA key `ssh-keygen -b 2048`
+- ECDSA key `ssh-keygen -t ed25519`
+
+If using multiple keys and they should be tried in a set order define a ssh config file `~/.ssh/config`
+
+For example, try the EC key before the RSA key.
+
+```shell
+IdentityFile ~/.ssh/id_ed25519
+IdentityFile ~/.ssh/id_rsa
+```
+
+For more information:
+
+- The man page for `man ssh_config`
+- [How To Configure Custom Connection Options for your SSH Client](https://www.digitalocean.com/community/tutorials/how-to-configure-custom-connection-options-for-your-ssh-client)
+
+## Python setup
+
+After the bootstrap is completed configure pyenv with the version of python required. Replace `x.x.x` with the relevant version. To see all version available to pyenv run `pyenv install -l`
+
+```shell
+pyenv install x.x.x
+pyenv global x.x.x
+```
+
+For more information:
+
+- [The right and wrong way to set Python 3 as default on a Mac](https://opensource.com/article/19/5/python-3-default-mac)
 
 ## Notes on homebrew
 
@@ -54,4 +82,3 @@ Install virtualbox using homebrew casks
 
 - [virtualbox-extension-pack](https://formulae.brew.sh/cask/virtualbox-extension-pack)
 - [virtualbox](https://formulae.brew.sh/cask/virtualbox)
-
