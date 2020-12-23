@@ -6,7 +6,7 @@ which -s brews > /dev/null
 if [[ $? != 0 ]] ; then
     # Install Homebrew
     echo "Installing Homebrew..."
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     if [ $? -ne 0 ]; then
     else
         echo "Failed to bootstrap Homebrew"
@@ -15,6 +15,4 @@ if [[ $? != 0 ]] ; then
 fi
 echo ""
 
-source homebrew-basic.sh
-source homebrew-latex.sh
-source homebrew-virtualbox.sh
+brew bundle --file ./init/Brewfile
